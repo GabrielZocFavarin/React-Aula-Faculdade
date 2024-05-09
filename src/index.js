@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Relogio from './MeuRelogio';
 import reportWebVitals from './reportWebVitals';
-import { Letreito } from './Letreiro';
+import MyRoutes from "./MyRoutes";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Relogio />
-    <Letreito />
+    <MyRoutes />
   </React.StrictMode>
 );
 
