@@ -7,7 +7,6 @@ export default function Gallery() {
 
   useEffect(() => {
     let index = 0;
-
     const timer = setInterval(() => {
       if (index < frase.length) {
         setTexto((textoAnterior) => textoAnterior + frase[index]);
@@ -23,10 +22,30 @@ export default function Gallery() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    if (texto === '') {
+      const timer = setTimeout(() => {
+        let index = 0;
+        const interval = setInterval(() => {
+          if (index < frase.length) {
+            setTexto((textoAnterior) => textoAnterior + frase[index]);
+            index++;
+          } else {
+            clearInterval(interval);
+            setTimeout(() => {
+              setTexto('');
+            }, 1000);
+          }
+        }, intervalo);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [texto]);
+
   return (
     <div>
       <h1>{texto}</h1>
     </div>
   );
 }
-
